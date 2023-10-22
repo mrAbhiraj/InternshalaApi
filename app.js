@@ -3,10 +3,18 @@ const express = require("express") ;
 const app = express() ;
 
 
+//db connection
+require("./models/database").connectDatabase() ;
+
 //logger
 const logger = require("morgan") ;
 
 app.use(logger("tiny")) ;
+
+
+//bodyparser
+app.use(express.json()) ;
+app.use(express.urlencoded({extended: false})) ;
 
 
 //routes
